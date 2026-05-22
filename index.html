@@ -4,260 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archies Library & Bookshop | Dubai</title>
-    <!-- Modern Framework & Icons -->
-    <link href="https://cloudflare.com" rel="stylesheet">
-    <link href="https://cloudflare.com" rel="stylesheet">
     <style>
-        :root {
-            --kindle-dark: #1a1a1a;
-            --archies-primary: #8B4513;
-            --archies-accent: #f4a261;
-            --bg-light: #f8f9fa;
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: var(--kindle-dark);
-        }
-        /* Top Premium Alert */
-        .top-banner {
-            background-color: var(--kindle-dark);
-            color: #fff;
-            font-size: 0.85rem;
-            padding: 8px 0;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
-        /* Navigation styling */
-        .navbar {
-            border-bottom: 1px solid #e5e5e5;
-            padding: 15px 0;
-        }
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--archies-primary) !important;
-            letter-spacing: -0.5px;
-        }
-        .nav-link {
-            font-weight: 500;
-            color: #444 !important;
-            margin-right: 15px;
-        }
-        .nav-link:hover { color: var(--archies-primary) !important; }
+        /* Core Framework Built Locally - No External Network Downloads Needed */
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff !important; color: #1a1a1a !important; margin: 0; padding: 0; }
         
-        /* Modern Clean Search & Hero Header */
-        .search-container-bg {
-            background-color: var(--bg-light);
-            border-bottom: 1px solid #e5e5e5;
-            padding: 40px 0;
-        }
-        .search-shadow {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .search-input {
-            border: 1px solid #ccc;
-            padding: 14px 20px;
-            font-size: 1.05rem;
-        }
-        .search-input:focus {
-            box-shadow: none;
-            border-color: var(--archies-primary);
-        }
-        .btn-search {
-            background-color: var(--archies-primary);
-            color: white;
-            padding: 0 30px;
-            font-weight: 600;
-        }
-        .btn-search:hover { background-color: #6f360e; color: white; }
-
-        /* Filter Pills */
-        .filter-pill {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 8px 20px;
-            border-radius: 20px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: #555;
-            transition: all 0.2s ease;
-        }
-        .filter-pill.active, .filter-pill:hover {
-            background-color: var(--kindle-dark);
-            color: white;
-            border-color: var(--kindle-dark);
-        }
-
-        /* Kindle Inspired Book Cards Layout */
-        .book-card {
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background: #fff;
-            overflow: hidden;
-            height: 100%;
-        }
-        .book-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-        }
-        .img-container {
-            background-color: #f1f1f1;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .book-img {
-            height: 180px;
-            object-fit: contain;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .badge-rent {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #2a9d8f;
-            color: white;
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .book-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: var(--kindle-dark);
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .book-author {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 12px;
-        }
-        .price-line {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--kindle-dark);
-        }
-        .buyback-text {
-            font-size: 0.75rem;
-            color: #d90429;
-            font-weight: 600;
-        }
-        .btn-action-rent {
-            background-color: #fff;
-            border: 1px solid var(--kindle-dark);
-            color: var(--kindle-dark);
-            font-weight: 600;
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-        .btn-action-rent:hover {
-            background-color: var(--kindle-dark);
-            color: white;
-        }
-        .btn-action-buy {
-            background-color: #f4a261;
-            border: 1px solid #f4a261;
-            color: #1a1a1a;
-            font-weight: 600;
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-        .btn-action-buy:hover { background-color: #e76f51; }
-
-        /* General Sections */
-        .section-heading {
-            font-weight: 800;
-            font-size: 1.75rem;
-            letter-spacing: -0.5px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .info-card {
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 25px;
-            background: #fff;
-        }
+        .top-alert { background: #1a1a1a; color: #fff; text-align: center; padding: 10px; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #e5e5e5; max-width: 1200px; margin: 0 auto; }
+        .brand { font-size: 1.5rem; font-weight: 800; color: #8B4513; text-decoration: none; }
+        .nav-links a { text-decoration: none; color: #444; font-weight: 600; margin-left: 20px; font-size: 0.95rem; }
+        .nav-links a:hover { color: #8B4513; }
+        .btn-signin { background: #1a1a1a; color: white !important; padding: 8px 16px; border-radius: 4px; }
+        
+        .search-section { background-color: #f8f9fa; border-bottom: 1px solid #e5e5e5; padding: 50px 20px; text-align: center; }
+        .search-section h2 { font-size: 2rem; font-weight: 700; margin: 0 0 10px 0; color: #1a1a1a; }
+        .search-section p { color: #666; margin: 0 0 25px 0; font-size: 1.05rem; }
+        
+        .search-bar-container { max-width: 550px; margin: 0 auto 25px auto; display: flex; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-radius: 6px; overflow: hidden; }
+        .search-input { flex-grow: 1; padding: 15px 20px; border: 1px solid #ccc; font-size: 1rem; outline: none; }
+        .search-input:focus { border-color: #8B4513; }
+        .btn-search { background: #8B4513; color: white; border: none; padding: 0 25px; font-weight: 600; cursor: pointer; font-size: 1rem; }
+        .btn-search:hover { background: #6f360e; }
+        
+        .filter-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 800px; margin: 0 auto; }
+        .filter-pill { background: white; border: 1px solid #ddd; padding: 8px 18px; border-radius: 20px; font-weight: 600; color: #555; cursor: pointer; transition: all 0.2s; }
+        .filter-pill.active, .filter-pill:hover { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+        
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 30px; color: #1a1a1a; border-left: 5px solid #8B4513; padding-left: 15px; }
+        
+        /* Premium Kindle Book Layout Grid */
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+        .book-card { border: 1px solid #e5e5e5; border-radius: 8px; background: white; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+        .book-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        
+        /* Pure CSS Styled Graphic Book Covers to Safeguard Loading */
+        .cover-box { height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; position: relative; color: white; font-weight: bold; }
+        .cover-fiction { background: linear-gradient(135deg, #2b5876, #4e4376); }
+        .cover-mystery { background: linear-gradient(135deg, #0f2027, #203a43); }
+        .cover-biography { background: linear-gradient(135deg, #134e5e, #71b280); }
+        .cover-comics { background: linear-gradient(135deg, #e65c00, #f9d423); }
+        
+        .badge-status { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.25); backdrop-filter: blur(5px); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); }
+        .cover-title { font-size: 1.1rem; margin-bottom: 5px; line-height: 1.3; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .cover-tag { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .card-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .book-title { font-size: 1.1rem; font-weight: 700; margin: 0 0 4px 0; color: #1a1a1a; }
+        .book-author { font-size: 0.9rem; color: #666; margin: 0 0 15px 0; }
+        
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #fdf0e6; padding: 8px 12px; border-radius: 6px; }
+        .price-val { font-size: 1.1rem; font-weight: 800; color: #1a1a1a; }
+        .buyback-badge { font-size: 0.75rem; color: #b7094c; font-weight: 700; text-transform: uppercase; }
+        
+        .btn-rent { background: white; border: 1px solid #1a1a1a; color: #1a1a1a; width: 100%; padding: 10px; border-radius: 4px; font-weight: 700; font-size: 0.9rem; cursor: pointer; margin-bottom: 8px; transition: all 0.2s; }
+        .btn-rent:hover { background: #1a1a1a; color: white; }
+        .btn-buy { background: #f4a261; border: 1px solid #f4a261; color: #1a1a1a; width: 100%; padding: 10px; border-radius: 4px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+        .btn-buy:hover { background: #e76f51; }
+        
+        .info-section { background: #f8f9fa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; padding: 60px 20px; margin-top: 40px; }
+        .info-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .info-block h3 { font-size: 1.4rem; font-weight: 700; margin: 0 0 15px 0; color: #1a1a1a; }
+        .info-block p { color: #555; line-height: 1.6; margin: 0 0 15px 0; font-size: 0.95rem; }
+        .quote-box { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #8B4513; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-style: italic; color: #444; }
+        
+        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .branch-card { border: 1px solid #e5e5e5; border-radius: 8px; padding: 25px; background: white; }
+        .branch-card h4 { margin: 0 0 12px 0; font-size: 1.2rem; font-weight: 700; }
+        .branch-karama { color: #0066cc; }
+        .branch-satwa { color: #008040; }
+        .branch-card p { margin: 0 0 8px 0; color: #333; font-size: 0.95rem; }
+        
+        footer { background: #1a1a1a; color: #aaa; text-align: center; padding: 30px 20px; font-size: 0.85rem; border-top: 5px solid #8B4513; }
+        footer p { margin: 4px 0; }
     </style>
 </head>
 <body>
 
-    <!-- Top Alert Banner -->
-    <div class="top-banner">
-        <i class="fa-solid fa-star text-warning"></i> DUBAI'S LEGENDARY LENDING LIBRARY & BOOKSHOP FOR OVER 30 YEARS
+    <!-- Top Alert bar -->
+    <div class="top-alert">
+        📚 DUBAI'S LEGENDARY LENDING LIBRARY & BOOKSHOP FOR OVER 30 YEARS
     </div>
 
     <!-- Navigation Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-book-open me-2"></i>ARCHIES LIBRARY</a>
-            <div class="d-flex align-items-center ms-auto">
-                <a class="nav-link d-none d-md-block" href="#about">Our Story</a>
-                <a class="nav-link d-none d-md-block" href="#branches">Branches</a>
-                <a class="btn btn-dark btn-sm px-3 ms-2" href="#" onclick="alert('Phase 1 Feature: Mock registration form popup will tie into Social Sign-In later.')"><i class="fa-solid fa-user me-2"></i>Sign In</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Clean Premium Kindle Search Area -->
-    <div class="search-container-bg">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-2">What would you like to read today?</h2>
-            <p class="text-muted mb-4">Rent directly via catalog subscription, or buy with our famous 50% lifetime cash-back option.</p>
-            
-            <div class="row justify-content-center mb-4">
-                <div class="col-md-8 col-lg-6">
-                    <div class="input-group search-shadow">
-                        <input type="text" id="bookSearchInput" class="form-control search-input" placeholder="Search by book title, author, keywords...">
-                        <button class="btn btn-search" type="button" onclick="filterBooks()"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Category Filter Row -->
-            <div class="d-flex flex-wrap justify-content-center mt-3">
-                <button class="filter-pill active" onclick="setActiveCategory('all', this)">All Collections</button>
-                <button class="filter-pill" onclick="setActiveCategory('fiction', this)">Fiction & Novels</button>
-                <button class="filter-pill" onclick="setActiveCategory('mystery', this)">Mystery & Thriller</button>
-                <button class="filter-pill" onclick="setActiveCategory('biography', this)">Biographies</button>
-                <button class="filter-pill" onclick="setActiveCategory('comics', this)">Comics & Manga</button>
-            </div>
+    <div class="navbar">
+        <a href="#" class="brand">📚 ARCHIES LIBRARY</a>
+        <div class="nav-links">
+            <a href="#about">Our Story</a>
+            <a href="#branches">Branches</a>
+            <a href="#" class="btn-signin" onclick="alert('Phase 1 Mock Registration: This button will switch to standard Google or Facebook integration in Phase 2.')">Sign In</a>
         </div>
     </div>
 
-    <!-- Live Dynamic Inventory Catalog Grid -->
-    <div class="container py-5">
-        <h3 class="section-heading"><i class="fa-solid fa-fire text-danger me-2"></i>Trending Inventory</h3>
+    <!-- Main Search Area -->
+    <div class="search-section">
+        <h2>What would you like to read today?</h2>
+        <p>Rent directly via catalog subscription, or buy with our famous 50% lifetime cash-back option.</p>
         
-        <div class="row g-4" id="booksCatalogGrid">
+        <div class="search-bar-container">
+            <input type="text" id="bookSearchInput" class="search-input" placeholder="Search by book title or author...">
+            <button class="btn-search" onclick="filterBooks()">Search</button>
+        </div>
+
+        <!-- Interactive Filter Row -->
+        <div class="filter-container">
+            <button class="filter-pill active" onclick="setActiveCategory('all', this)">All Collections</button>
+            <button class="filter-pill" onclick="setActiveCategory('fiction', this)">Fiction & Novels</button>
+            <button class="filter-pill" onclick="setActiveCategory('mystery', this)">Mystery & Thriller</button>
+            <button class="filter-pill" onclick="setActiveCategory('biography', this)">Biographies</button>
+            <button class="filter-pill" onclick="setActiveCategory('comics', this)">Comics & Manga</button>
+        </div>
+    </div>
+
+    <!-- Inventory Catalog Grid -->
+    <div class="main-container">
+        <h3 class="section-title">Trending Inventory</h3>
+        
+        <div class="catalog-grid" id="booksCatalogGrid">
             <!-- Book 1 -->
-            <div class="col-6 col-md-4 col-lg-3 book-item-card" data-category="fiction" data-title="the midnight library matt haig">
+            <div class="book-item-card" data-category="fiction" data-title="the midnight library matt haig">
                 <div class="book-card">
-                    <div class="img-container">
-                        <span class="badge-rent">Available to Rent</span>
-                        <img src="https://ssl-images-amazon.com" class="book-img" alt="Book Cover">
+                    <div class="cover-box cover-fiction">
+                        <span class="badge-status">Library Stack</span>
+                        <div class="cover-title">The Midnight<br>Library</div>
+                        <div class="cover-tag">Novel</div>
                     </div>
-                    <div class="p-3">
+                    <div class="card-info">
                         <div class="book-title">The Midnight Library</div>
-                        <div class="book-author">Matt Haig</div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="price-line">AED 35</span>
-                            <span class="buyback-text"><i class="fa-solid fa-rotate-left"></i> 50% Return Value</span>
+                        <div class="book-author">by Matt Haig</div>
+                        <div class="price-row">
+                            <span class="price-val">AED 35</span>
+                            <span class="buyback-badge">50% Cash Back</span>
                         </div>
-                        <button class="btn-action-rent" onclick="triggerMockOrder('The Midnight Library', 'Rent')">Rent from Library</button>
+                        <button class="btn-rent" onclick="triggerMockOrder('The Midnight Library', 'Rent')">Rent from Library</button>
