@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archies Bookshop & Lending Library Dubai</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div>📞 Karama: <strong>04-3967924</strong></div>
+    <div>📞 Satwa: <strong>04-3491914</strong></div>
+    <div class="social">Follow us: ● ● ●</div>
+  </div>
+
+  <header class="main-header">
+    <a class="brand" href="#home">
+      <img src="assets/archies-logo-crop.png" alt="Archies Bookshop logo" />
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#books">Books</a>
+      <a href="#membership">Membership</a>
+      <a href="#rentbuy">Rent / Buy</a>
+      <a href="#about">About</a>
+      <a href="#locations">Locations</a>
+      <a href="#contact">Contact</a>
+      <a class="account" href="#profile">👤 My Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="tag">Old School Dubai Library</p>
+          <h1>Your neighbourhood bookshop & lending library</h1>
+          <p>75,000+ used and new books across fiction, romance, business, children, comics, school books, magazines and more.</p>
+          <div class="hero-actions">
+            <a href="#books" class="btn primary">Browse Books</a>
+            <a href="#membership" class="btn secondary">Membership Plans</a>
+          </div>
+        </div>
+        <div class="search-card">
+          <h2>Search Books</h2>
+          <div class="search-row">
+            <input id="searchInput" type="text" placeholder="Search by title, author, or keyword..." />
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="Self Help">Self Help</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Business">Business</option>
+              <option value="Children">Children</option>
+              <option value="Comics">Comics</option>
+            </select>
+            <button id="searchBtn" class="btn primary">Search</button>
+          </div>
+          <div class="quick-tags">
+            <button data-key="Atomic Habits">Atomic Habits</button>
+            <button data-key="Harry Potter">Harry Potter</button>
+            <button data-key="Rich Dad">Rich Dad Poor Dad</button>
+            <button data-key="Alchemist">The Alchemist</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip" id="rentbuy">
+      <div><span>📕</span><h3>Rent Books</h3><p>Affordable rentals for all age groups.</p></div>
+      <div><span>🛒</span><h3>Buy Books</h3><p>Choose from used and new books.</p></div>
+      <div><span>🏬</span><h3>Pick Up In-Store</h3><p>Karama or Satwa pickup.</p></div>
+      <div><span>👤</span><h3>Member Benefits</h3><p>Discounts and priority access.</p></div>
+    </section>
+
+    <section class="layout-grid">
+      <aside class="panel" id="membership">
+        <h2>Membership Plans</h2>
+        <p>Choose a plan that suits you.</p>
+        <label><input type="radio" name="plan" /> Monthly <strong>AED 30 / month</strong></label>
+        <label><input type="radio" name="plan" /> Quarterly <strong>AED 80 / 3 months</strong></label>
+        <label><input type="radio" name="plan" /> Half Yearly <strong>AED 150 / 6 months</strong></label>
+        <label><input type="radio" name="plan" /> Yearly <strong>AED 250 / year</strong></label>
+        <button class="btn primary full">Join Now</button>
+        <small>Phase 1: Pay at store only.</small>
+      </aside>
+
+      <section class="panel books-section" id="books">
+        <div class="section-head"><h2>Popular Books</h2><a href="#books">View all →</a></div>
+        <div id="booksGrid" class="books-grid"></div>
+      </section>
+
+      <aside class="panel why-card">
+        <h2>Why Choose Archies?</h2>
+        <ul>
+          <li>30+ years of trusted service</li>
+          <li>Huge collection of used and new books</li>
+          <li>Rent, buy and return options</li>
+          <li>Books for kids, teens and adults</li>
+          <li>Friendly staff and great service</li>
+        </ul>
+        <div class="whatsapp-card">
+          <div class="wa-icon">🟢</div>
+          <h3>Need Help?</h3>
+          <p>Chat with us on WhatsApp</p>
+          <a class="btn primary" href="https://wa.me/97143967924" target="_blank">Chat Now</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="stats">
+      <div><strong>75,000+</strong><span>Books Collection</span></div>
+      <div><strong>30+ Years</strong><span>Trusted Service</span></div>
+      <div><strong>2 Locations</strong><span>Karama & Satwa</span></div>
+      <div><strong>All Age Groups</strong><span>Kids, Teens, Adults</span></div>
+      <div><strong>Great Prices</strong><span>Rent or Buy</span></div>
+    </section>
+
+    <section class="two-col" id="about">
+      <div class="panel">
+        <h2>About Archies</h2>
+        <p>Archies Bookshop & Lending Library is a community-style old school Dubai bookshop offering used and new books, lending library options, and a welcoming browsing experience.</p>
+        <p>This Phase 1 website is a demo. Final history, owner photographs, newspaper articles and exact policies can be added after owner approval.</p>
+      </div>
+      <div class="panel image-panel"><img src="assets/archies-storefront.png" alt="Archies storefront" /></div>
+    </section>
+
+    <section class="panel" id="profile">
+      <h2>Demo User Profile</h2>
+      <div class="profile-box">
+        <p><strong>Name:</strong> Demo Reader</p>
+        <p><strong>Subscription:</strong> Yearly Plan</p>
+        <p><strong>Books Borrowed:</strong> The Alchemist, Atomic Habits</p>
+      </div>
+    </section>
+
+    <section class="panel testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-grid">
+        <blockquote>“A beautiful old-school bookshop with a huge collection.”</blockquote>
+        <blockquote>“Great place to rent books for children and adults.”</blockquote>
+        <blockquote>“Friendly staff and very affordable options.”</blockquote>
+      </div>
+    </section>
+
+    <section class="footer-grid" id="locations">
+      <div><h3>Archies Library Karama</h3><p>📍 Dubai Pyramid Building, Shop 13-14, 11th Street, Al Karama, Dubai</p><p>☎ 04-3967924</p></div>
+      <div><h3>BookWorld Satwa</h3><p>📍 Al Fardan Building, near Al Hudaiba Street, Al Satwa, Dubai</p><p>☎ 04-3491914</p></div>
+      <div><h3>Quick Links</h3><p>Home · Books · Membership · Rent / Buy · About · Contact</p></div>
+      <div id="contact"><h3>Contact Us</h3><input placeholder="Your email" /><textarea placeholder="Your message"></textarea><button class="btn primary">Send Enquiry</button></div>
+    </section>
+  </main>
+
+  <footer>© 2026 Archies Bookshop & Lending Library. Demo website.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
