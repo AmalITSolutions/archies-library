@@ -1,0 +1,11 @@
+[
+  {"title":"The Alchemist","author":"Paulo Coelho","genre":"Fiction","type":"Rent & Buy","branch":"Karama","status":"Available"},
+  {"title":"Atomic Habits","author":"James Clear","genre":"Self Help","type":"Rent & Buy","branch":"Satwa","status":"Available"},
+  {"title":"Harry Potter and the Philosopher's Stone","author":"J.K. Rowling","genre":"Children","type":"Rent","branch":"Karama","status":"Available"},
+  {"title":"Rich Dad Poor Dad","author":"Robert Kiyosaki","genre":"Finance","type":"Buy","branch":"Satwa","status":"Limited"},
+  {"title":"Ikigai","author":"Héctor García and Francesc Miralles","genre":"Self Help","type":"Rent & Buy","branch":"Karama","status":"Available"},
+  {"title":"The Kite Runner","author":"Khaled Hosseini","genre":"Fiction","type":"Rent","branch":"Satwa","status":"Available"},
+  {"title":"Diary of a Wimpy Kid","author":"Jeff Kinney","genre":"Children","type":"Rent & Buy","branch":"Karama","status":"Available"},
+  {"title":"The Psychology of Money","author":"Morgan Housel","genre":"Finance","type":"Buy","branch":"Satwa","status":"Available"},
+  {"title":"Pride and Prejudice","author":"Jane Austen","genre":"Classic","type":"Rent","branch":"Karama","status":"Available"}
+]
