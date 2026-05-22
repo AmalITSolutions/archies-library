@@ -4,105 +4,260 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archies Library & Bookshop | Dubai</title>
-    <!-- Combined Backup CSS framework links to guarantee loading -->
+    <!-- Modern Framework & Icons -->
     <link href="https://cloudflare.com" rel="stylesheet">
-    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link href="https://cloudflare.com" rel="stylesheet">
     <style>
-        /* Embedded styling safeguards if external cloud frameworks block */
-        body { background-color: #ffffff !important; color: #212529 !important; font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
-        .custom-nav { background-color: #f8f9fa; padding: 15px; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; }
-        .custom-nav a { text-decoration: none; color: #495057; margin-left: 15px; font-weight: 500; }
-        .hero-section { background: #343a40; color: white !important; padding: 80px 20px; text-align: center; }
-        .search-box { max-width: 500px; margin: 20px auto 0 auto; display: flex; }
-        .search-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
-        .search-btn { background: #8B4513; color: white; border: none; padding: 10px 20px; border-radius: 0 4px 4px 0; cursor: pointer; }
-        .section-padding { padding: 50px 20px; max-width: 1100px; margin: 0 auto; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .custom-card { background: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 8px; }
-        .footer-bar { background: #212529; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        :root {
+            --kindle-dark: #1a1a1a;
+            --archies-primary: #8B4513;
+            --archies-accent: #f4a261;
+            --bg-light: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: var(--kindle-dark);
+        }
+        /* Top Premium Alert */
+        .top-banner {
+            background-color: var(--kindle-dark);
+            color: #fff;
+            font-size: 0.85rem;
+            padding: 8px 0;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        /* Navigation styling */
+        .navbar {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--archies-primary) !important;
+            letter-spacing: -0.5px;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #444 !important;
+            margin-right: 15px;
+        }
+        .nav-link:hover { color: var(--archies-primary) !important; }
+        
+        /* Modern Clean Search & Hero Header */
+        .search-container-bg {
+            background-color: var(--bg-light);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 40px 0;
+        }
+        .search-shadow {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .search-input {
+            border: 1px solid #ccc;
+            padding: 14px 20px;
+            font-size: 1.05rem;
+        }
+        .search-input:focus {
+            box-shadow: none;
+            border-color: var(--archies-primary);
+        }
+        .btn-search {
+            background-color: var(--archies-primary);
+            color: white;
+            padding: 0 30px;
+            font-weight: 600;
+        }
+        .btn-search:hover { background-color: #6f360e; color: white; }
+
+        /* Filter Pills */
+        .filter-pill {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.2s ease;
+        }
+        .filter-pill.active, .filter-pill:hover {
+            background-color: var(--kindle-dark);
+            color: white;
+            border-color: var(--kindle-dark);
+        }
+
+        /* Kindle Inspired Book Cards Layout */
+        .book-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: #fff;
+            overflow: hidden;
+            height: 100%;
+        }
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        .img-container {
+            background-color: #f1f1f1;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .book-img {
+            height: 180px;
+            object-fit: contain;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .badge-rent {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #2a9d8f;
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .book-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--kindle-dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .book-author {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        .price-line {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--kindle-dark);
+        }
+        .buyback-text {
+            font-size: 0.75rem;
+            color: #d90429;
+            font-weight: 600;
+        }
+        .btn-action-rent {
+            background-color: #fff;
+            border: 1px solid var(--kindle-dark);
+            color: var(--kindle-dark);
+            font-weight: 600;
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .btn-action-rent:hover {
+            background-color: var(--kindle-dark);
+            color: white;
+        }
+        .btn-action-buy {
+            background-color: #f4a261;
+            border: 1px solid #f4a261;
+            color: #1a1a1a;
+            font-weight: 600;
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .btn-action-buy:hover { background-color: #e76f51; }
+
+        /* General Sections */
+        .section-heading {
+            font-weight: 800;
+            font-size: 1.75rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .info-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 25px;
+            background: #fff;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Safety Nav Bar -->
-    <div class="custom-nav container">
-        <div style="font-weight: bold; font-size: 1.2rem; color: #8B4513;">📚 Archies Library</div>
-        <div>
-            <a href="#">Home</a>
-            <a href="#about">Our Story</a>
-            <a href="#contact">Find Us</a>
-            <a href="#" style="background: #0d6efd; color: white; padding: 6px 12px; border-radius: 4px;">Sign In</a>
-        </div>
+    <!-- Top Alert Banner -->
+    <div class="top-banner">
+        <i class="fa-solid fa-star text-warning"></i> DUBAI'S LEGENDARY LENDING LIBRARY & BOOKSHOP FOR OVER 30 YEARS
     </div>
 
-    <!-- Safety Hero Section -->
-    <div class="hero-section">
-        <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">Dubai's Beloved Community Library</h1>
-        <p style="color: #ccc; font-size: 1.1rem;">Serving readers in Karama & Satwa for over 30 years.</p>
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Search by title, author, or genre...">
-            <button class="search-btn">Search</button>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <div id="about" class="section-padding">
-        <div class="grid-3" style="grid-template-columns: 1.2fr 0.8fr; align-items: center;">
-            <div>
-                <h2 style="font-weight: bold; margin-bottom: 20px;">Our 30-Year Journey</h2>
-                <p style="color: #6c757d; line-height: 1.6;">Founded by <strong>Bhisham and Leena Sainani</strong>, Archies began with a simple mission: to make reading affordable for everyone in Dubai. For decades, our spaces in Karama and Satwa have been a safe haven for book lovers.</p>
-                <p style="color: #6c757d; line-height: 1.6;">We operate on a unique model. Buy a book and return it anytime for <strong>50% cash back</strong>, or sign up for our flexible membership plans to rent up to 24 books a month!</p>
-            </div>
-            <div style="text-align: center;">
-                <img src="https://unsplash.com" alt="Bookshelf" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fa-solid fa-book-open me-2"></i>ARCHIES LIBRARY</a>
+            <div class="d-flex align-items-center ms-auto">
+                <a class="nav-link d-none d-md-block" href="#about">Our Story</a>
+                <a class="nav-link d-none d-md-block" href="#branches">Branches</a>
+                <a class="btn btn-dark btn-sm px-3 ms-2" href="#" onclick="alert('Phase 1 Feature: Mock registration form popup will tie into Social Sign-In later.')"><i class="fa-solid fa-user me-2"></i>Sign In</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Testimonials Section -->
-    <div class="bg-light" style="background-color: #f8f9fa; padding: 50px 0;">
-        <div class="section-padding" style="text-align: center;">
-            <h2 style="font-weight: bold;">What Our Readers Say</h2>
-            <div class="grid-3">
-                <div class="custom-card" style="background: white;">
-                    <p>"Archies is a hidden gem in Dubai. The 50% buy-back system is unmatched, and Uncle Bhisham is welcoming!"</p>
-                    <small style="color: #6c757d; font-weight: bold;">— Google Reviewer</small>
-                </div>
-                <div class="custom-card" style="background: white;">
-                    <p>"I have been coming to the Satwa branch since my childhood. Best place to find second-hand novels and comics."</p>
-                    <small style="color: #6c757d; font-weight: bold;">— Reddit Community Member</small>
-                </div>
-                <div class="custom-card" style="background: white;">
-                    <p>"An absolute paradise for avid readers. Their collection spans every genre imaginable at incredibly fair prices."</p>
-                    <small style="color: #6c757d; font-weight: bold;">— Local Guide</small>
+    <!-- Clean Premium Kindle Search Area -->
+    <div class="search-container-bg">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-2">What would you like to read today?</h2>
+            <p class="text-muted mb-4">Rent directly via catalog subscription, or buy with our famous 50% lifetime cash-back option.</p>
+            
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-8 col-lg-6">
+                    <div class="input-group search-shadow">
+                        <input type="text" id="bookSearchInput" class="form-control search-input" placeholder="Search by book title, author, keywords...">
+                        <button class="btn btn-search" type="button" onclick="filterBooks()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Branches Section -->
-    <div id="contact" class="section-padding">
-        <h2 style="font-weight: bold; text-align: center; margin-bottom: 40px;">Visit Our Branches</h2>
-        <div class="grid-3">
-            <div class="custom-card">
-                <h4 style="color: #0d6efd; font-weight: bold; margin-bottom: 15px;">Archies Bookshop (Karama)</h4>
-                <p>📍 Shop No. 13-14, Pyramid Building, 11th Street, Al Karama, Dubai</p>
-                <p>📞 Phone: +971 4 396 7922</p>
-                <p style="color: #6c757d; font-size: 0.9rem;">🕒 Hours: 11:00 AM – 9:30 PM Daily</p>
-            </div>
-            <div class="custom-card">
-                <h4 style="color: #198754; font-weight: bold; margin-bottom: 15px;">Book World Trading (Satwa)</h4>
-                <p>📍 Al Satwa Road, Near Satwa Bus Station, Al Satwa, Dubai</p>
-                <p>📞 Phone: +971 4 349 1914</p>
-                <p style="color: #6c757d; font-size: 0.9rem;">🕒 Hours: 11:00 AM – 9:30 PM Daily</p>
+            <!-- Interactive Category Filter Row -->
+            <div class="d-flex flex-wrap justify-content-center mt-3">
+                <button class="filter-pill active" onclick="setActiveCategory('all', this)">All Collections</button>
+                <button class="filter-pill" onclick="setActiveCategory('fiction', this)">Fiction & Novels</button>
+                <button class="filter-pill" onclick="setActiveCategory('mystery', this)">Mystery & Thriller</button>
+                <button class="filter-pill" onclick="setActiveCategory('biography', this)">Biographies</button>
+                <button class="filter-pill" onclick="setActiveCategory('comics', this)">Comics & Manga</button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer-bar">
-        <p style="margin: 0;">&copy; 2026 Archies Library Prototype. Built for Community Review.</p>
-    </div>
-
-</body>
-</html>
+    <!-- Live Dynamic Inventory Catalog Grid -->
+    <div class="container py-5">
+        <h3 class="section-heading"><i class="fa-solid fa-fire text-danger me-2"></i>Trending Inventory</h3>
+        
+        <div class="row g-4" id="booksCatalogGrid">
+            <!-- Book 1 -->
+            <div class="col-6 col-md-4 col-lg-3 book-item-card" data-category="fiction" data-title="the midnight library matt haig">
+                <div class="book-card">
+                    <div class="img-container">
+                        <span class="badge-rent">Available to Rent</span>
+                        <img src="https://ssl-images-amazon.com" class="book-img" alt="Book Cover">
+                    </div>
+                    <div class="p-3">
+                        <div class="book-title">The Midnight Library</div>
+                        <div class="book-author">Matt Haig</div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="price-line">AED 35</span>
+                            <span class="buyback-text"><i class="fa-solid fa-rotate-left"></i> 50% Return Value</span>
+                        </div>
+                        <button class="btn-action-rent" onclick="triggerMockOrder('The Midnight Library', 'Rent')">Rent from Library</button>
