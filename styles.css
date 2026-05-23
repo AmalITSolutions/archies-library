@@ -874,3 +874,72 @@ footer{
     grid-template-columns:1fr;
   }
 }
+
+
+/* V8 Public Website Cleanup: Offers, Donate, Member Portal */
+.offers-section{
+  margin:18px 4%;
+  display:grid;
+  grid-template-columns:1.4fr .9fr;
+  gap:18px;
+}
+
+.offer-card{
+  background:linear-gradient(135deg,#fffaf3,#fff1e8);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:24px;
+}
+
+.main-offer{
+  background:
+    linear-gradient(135deg,rgba(255,250,243,.96),rgba(255,235,220,.96));
+}
+
+.offer-label{
+  display:inline-block;
+  background:#fff0e8;
+  color:var(--orange);
+  border:1px solid #ffd1bd;
+  border-radius:999px;
+  padding:7px 12px;
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.offer-card h2{
+  margin:0 0 10px;
+  font-size:28px;
+}
+
+.offer-card p{
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+.member-login-section{
+  margin:18px 4%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.member-login-section p{
+  max-width:850px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+@media(max-width:900px){
+  .offers-section{
+    grid-template-columns:1fr;
+  }
+  .member-login-section{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
