@@ -1,4 +1,3 @@
-# Archies Library Phase 2 Design Demo
+# Archies Library V4
 
-Upload all files and the assets folder to GitHub repository root.
-This is a static GitHub Pages website with dummy data.
+Merged version preserving current hero, membership, and About section, with enhanced catalogue and filters.

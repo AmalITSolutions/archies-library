@@ -46,22 +46,37 @@
         <div class="search-card">
           <h2>Search Books</h2>
           <div class="search-row">
-            <input id="searchInput" type="text" placeholder="Search by title, author, or keyword..." />
+            <input id="searchInput" type="text" placeholder="Search by title, author, genre, language, keyword..." />
             <select id="categoryFilter">
-              <option value="all">All Categories</option>
-              <option value="Self Help">Self Help</option>
-              <option value="Fiction">Fiction</option>
-              <option value="Business">Business</option>
-              <option value="Children">Children</option>
-              <option value="Comics">Comics</option>
+              <option value="all">All Genres</option>
             </select>
             <button id="searchBtn" class="btn primary">Search</button>
           </div>
+
+          <div class="advanced-filters">
+            <select id="languageFilter">
+              <option value="all">All Languages</option>
+            </select>
+            <select id="branchFilter">
+              <option value="all">All Branches</option>
+            </select>
+            <select id="ageFilter">
+              <option value="all">All Age Groups</option>
+            </select>
+            <select id="typeFilter">
+              <option value="all">Rent / Buy</option>
+              <option value="Rent">Rent</option>
+              <option value="Buy">Buy</option>
+              <option value="Rent & Buy">Rent & Buy</option>
+            </select>
+          </div>
+
           <div class="quick-tags">
             <button data-key="Atomic Habits">Atomic Habits</button>
             <button data-key="Harry Potter">Harry Potter</button>
-            <button data-key="Rich Dad">Rich Dad Poor Dad</button>
-            <button data-key="Alchemist">The Alchemist</button>
+            <button data-key="Comics">Comics</button>
+            <button data-key="Children">Children</button>
+            <button data-key="Malayalam">Malayalam</button>
           </div>
         </div>
       </div>
@@ -106,7 +121,33 @@
       </aside>
 
       <section class="panel books-section" id="books">
-        <div class="section-head"><h2>Popular Books</h2><a href="#books">View all →</a></div>
+        <div class="section-head">
+          <div>
+            <h2>Book Catalogue</h2>
+            <p class="section-subtitle">Search and filter a sample catalogue of books across genres, languages and branches.</p>
+          </div>
+          <span id="resultCount" class="result-count">Showing books</span>
+        </div>
+
+        <div class="catalogue-toolbar">
+          <select id="conditionFilter">
+            <option value="all">All Conditions</option>
+          </select>
+          <select id="availabilityFilter">
+            <option value="all">All Availability</option>
+            <option value="Available">Available</option>
+            <option value="Limited">Limited</option>
+            <option value="Out of Stock">Out of Stock</option>
+          </select>
+          <select id="sortFilter">
+            <option value="popular">Sort: Popular</option>
+            <option value="title">Sort: Title A-Z</option>
+            <option value="priceLow">Sort: Price Low to High</option>
+            <option value="priceHigh">Sort: Price High to Low</option>
+          </select>
+          <button id="resetFilters" class="btn light">Reset</button>
+        </div>
+
         <div id="booksGrid" class="books-grid"></div>
       </section>
 

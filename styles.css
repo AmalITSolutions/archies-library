@@ -481,3 +481,160 @@ footer{
     grid-template-columns:1fr;
   }
 }
+
+
+/* V4 Catalogue Enhancements */
+.advanced-filters,
+.catalogue-toolbar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:14px;
+}
+
+.catalogue-toolbar{
+  grid-template-columns:1fr 1fr 1fr auto;
+  margin:14px 0 20px;
+}
+
+.catalogue-toolbar select,
+.advanced-filters select{
+  border:1px solid #dfc7b5;
+  border-radius:8px;
+  padding:12px;
+  background:white;
+}
+
+.section-subtitle{
+  margin-top:-8px;
+  color:var(--muted);
+}
+
+.result-count{
+  background:#fff0e8;
+  color:var(--orange);
+  border:1px solid #ffd1bd;
+  border-radius:20px;
+  padding:8px 14px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.btn.light{
+  background:white;
+  color:var(--orange);
+  border:1px solid #f2c6b2;
+}
+
+.book-card{
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.book-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 24px rgba(71,38,18,.14);
+}
+
+.book-cover{
+  height:185px;
+  background:linear-gradient(135deg,#ffefe2,#fffaf3);
+  position:relative;
+  overflow:hidden;
+}
+
+.book-cover::before{
+  content:'';
+  position:absolute;
+  inset:12px;
+  border:2px solid rgba(232,72,28,.18);
+  border-radius:10px;
+}
+
+.book-cover .cover-title{
+  position:relative;
+  z-index:1;
+  font-size:20px;
+  line-height:1.15;
+}
+
+.book-body{
+  min-height:205px;
+  display:flex;
+  flex-direction:column;
+}
+
+.book-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:8px 0;
+}
+
+.book-price{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+
+.book-price strong{
+  color:var(--orange);
+}
+
+.book-card .small{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.book-actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.book-actions a{
+  flex:1;
+  text-align:center;
+  font-size:13px;
+  padding:9px 10px;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  background:#edf7e6;
+  color:#3d701a;
+}
+
+.status.limited{
+  background:#fff3d8;
+  color:#8a5a00;
+}
+
+.status.out{
+  background:#f8e4e4;
+  color:#9b1d1d;
+}
+
+@media(max-width:1000px){
+  .advanced-filters,
+  .catalogue-toolbar{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:620px){
+  .advanced-filters,
+  .catalogue-toolbar{
+    grid-template-columns:1fr;
+  }
+  .section-head{
+    align-items:flex-start;
+    gap:10px;
+    flex-direction:column;
+  }
+}
