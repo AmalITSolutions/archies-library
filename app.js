@@ -841,6 +841,7 @@ const books = [
   }
 ];
 
+
 const grid = document.getElementById('booksGrid');
 const searchInput = document.getElementById('searchInput');
 const categoryFilter = document.getElementById('categoryFilter');
@@ -852,6 +853,11 @@ const conditionFilter = document.getElementById('conditionFilter');
 const availabilityFilter = document.getElementById('availabilityFilter');
 const sortFilter = document.getElementById('sortFilter');
 const resultCount = document.getElementById('resultCount');
+const paginationControls = document.getElementById('paginationControls');
+
+const BOOKS_PER_PAGE = 12;
+let currentPage = 1;
+let filteredBooks = [];
 
 function uniqueValues(key) {
   return [...new Set(books.map(book => book[key]))].sort();
@@ -884,13 +890,61 @@ function whatsappLink(book) {
   return `https://wa.me/97143967924?text=${encodeURIComponent(message)}`;
 }
 
-function renderBooks(list) {
-  if (!grid) return;
-  if (resultCount) {
-    resultCount.textContent = `Showing ${list.length} of ${books.length} books`;
+function renderPagination(totalItems) {
+  if (!paginationControls) return;
+
+  const totalPages = Math.max(1, Math.ceil(totalItems / BOOKS_PER_PAGE));
+  currentPage = Math.min(currentPage, totalPages);
+
+  if (totalPages <= 1) {
+    paginationControls.innerHTML = '';
+    return;
   }
 
-  grid.innerHTML = list.map(book => `
+  let buttons = '';
+
+  buttons += `<button ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">Previous</button>`;
+
+  for (let page = 1; page <= totalPages; page++) {
+    buttons += `<button class="${page === currentPage ? 'active' : ''}" data-page="${page}">${page}</button>`;
+  }
+
+  buttons += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">Next</button>`;
+  buttons += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page="${totalPages}">Last</button>`;
+
+  paginationControls.innerHTML = buttons;
+
+  paginationControls.querySelectorAll('button[data-page]').forEach(button => {
+    button.addEventListener('click', () => {
+      const page = Number(button.dataset.page);
+      if (!page || page === currentPage) return;
+      currentPage = page;
+      renderBooks(filteredBooks);
+      document.getElementById('books')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+function renderBooks(list) {
+  if (!grid) return;
+
+  filteredBooks = list;
+  const totalPages = Math.max(1, Math.ceil(list.length / BOOKS_PER_PAGE));
+  currentPage = Math.min(currentPage, totalPages);
+
+  const start = (currentPage - 1) * BOOKS_PER_PAGE;
+  const end = start + BOOKS_PER_PAGE;
+  const pageBooks = list.slice(start, end);
+
+  if (resultCount) {
+    if (list.length === 0) {
+      resultCount.textContent = `No books found`;
+    } else {
+      resultCount.textContent = `Showing ${start + 1}-${Math.min(end, list.length)} of ${list.length} books`;
+    }
+  }
+
+  grid.innerHTML = pageBooks.map(book => `
     <article class="book-card">
       <div class="book-cover">
         <div class="cover-title">${book.title}</div>
@@ -916,6 +970,8 @@ function renderBooks(list) {
       </div>
     </article>
   `).join('') || '<p>No books found. Try another search or reset filters.</p>';
+
+  renderPagination(list.length);
 }
 
 function matchesFilter(value, filterValue) {
@@ -923,6 +979,8 @@ function matchesFilter(value, filterValue) {
 }
 
 function filterBooks() {
+  currentPage = 1;
+
   const q = (searchInput?.value || '').toLowerCase().trim();
   const genre = categoryFilter?.value || 'all';
   const language = languageFilter?.value || 'all';
@@ -980,4 +1038,4 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
   document.getElementById('navMenu')?.classList.toggle('open');
 });
 
-renderBooks(books.slice().sort((a,b) => b.popularity - a.popularity));
+filterBooks();
