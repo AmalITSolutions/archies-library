@@ -228,6 +228,12 @@ textarea{
   font-size:15px;
 }
 
+.panel label strong{
+  text-align:right;
+  line-height:1.4;
+  font-size:14px;
+}
+
 .panel label input[type="radio"]{
   width:18px;
   height:18px;
