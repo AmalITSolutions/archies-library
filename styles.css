@@ -85,7 +85,7 @@ a{text-decoration:none;color:inherit}
 .hero{
   position:relative;
   min-height:520px;
-  background:url('assets/archies-storefront.png') center top/contain no-repeat;
+  background:url('assets/archies-storefront.png') center top/100% auto no-repeat;
   background-color:#1f1a16;
 }
 
