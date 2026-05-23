@@ -65,10 +65,15 @@ a{text-decoration:none;color:inherit}
   font-weight:700;
 }
 
-.account{
+.account,
+.whatsapp-nav{
   border:1px solid rgba(255,255,255,.45);
   padding:10px 14px;
   border-radius:22px;
+}
+
+.whatsapp-nav{
+  background:rgba(255,255,255,.12);
 }
 
 .menu-btn{
@@ -193,8 +198,8 @@ textarea{
   margin:18px 4%;
   padding:22px;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
 }
 
 .feature-strip div{
@@ -755,5 +760,76 @@ footer{
   .pagination-controls button{
     padding:8px 10px;
     font-size:13px;
+  }
+}
+
+
+/* V6 Layout Cleanup */
+.combined-benefits{
+  align-items:stretch;
+}
+
+.combined-benefits div{
+  text-align:center;
+}
+
+.combined-benefits span{
+  display:block;
+  margin-bottom:6px;
+}
+
+.layout-grid{
+  grid-template-columns:260px minmax(0,1fr);
+  align-items:start;
+}
+
+.books-grid{
+  grid-template-columns:repeat(4,minmax(190px,1fr));
+}
+
+.why-card{
+  display:none;
+}
+
+.stats{
+  display:none;
+}
+
+@media(min-width:1500px){
+  .books-grid{
+    grid-template-columns:repeat(5,minmax(190px,1fr));
+  }
+}
+
+@media(max-width:1200px){
+  .feature-strip{
+    grid-template-columns:repeat(3,1fr);
+  }
+  .layout-grid{
+    grid-template-columns:240px minmax(0,1fr);
+  }
+  .books-grid{
+    grid-template-columns:repeat(3,minmax(190px,1fr));
+  }
+}
+
+@media(max-width:900px){
+  .feature-strip{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .layout-grid{
+    grid-template-columns:1fr;
+  }
+  .books-grid{
+    grid-template-columns:repeat(2,minmax(220px,1fr));
+  }
+}
+
+@media(max-width:620px){
+  .feature-strip{
+    grid-template-columns:1fr;
+  }
+  .books-grid{
+    grid-template-columns:1fr;
   }
 }
