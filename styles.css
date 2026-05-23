@@ -219,7 +219,7 @@ textarea{
 
 .panel label{
   display:grid;
-  grid-template-columns:22px 1fr auto;
+  grid-template-columns:22px 120px auto;
   align-items:center;
   gap:12px;
   padding:12px 0;
