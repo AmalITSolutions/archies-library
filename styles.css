@@ -833,3 +833,44 @@ footer{
     grid-template-columns:1fr;
   }
 }
+
+
+/* V7 Full Catalogue Filters */
+.catalogue-search-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  margin:14px 0 12px;
+}
+
+.catalogue-search-row input{
+  width:100%;
+  border:1px solid #dfc7b5;
+  border-radius:8px;
+  padding:12px;
+  background:white;
+}
+
+.catalogue-toolbar.full-filter-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(150px,1fr));
+  gap:10px;
+  margin:0 0 20px;
+}
+
+.catalogue-toolbar.full-filter-grid select{
+  width:100%;
+}
+
+@media(max-width:1000px){
+  .catalogue-toolbar.full-filter-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:620px){
+  .catalogue-search-row,
+  .catalogue-toolbar.full-filter-grid{
+    grid-template-columns:1fr;
+  }
+}

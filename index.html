@@ -132,7 +132,30 @@
           <span id="resultCount" class="result-count">Showing books</span>
         </div>
 
-        <div class="catalogue-toolbar">
+        <div class="catalogue-search-row">
+          <input id="catalogueSearchInput" type="text" placeholder="Search catalogue by title, author, genre, language..." />
+          <button id="resetFilters" class="btn light">Reset Filters</button>
+        </div>
+
+        <div class="catalogue-toolbar full-filter-grid">
+          <select id="catalogueGenreFilter">
+            <option value="all">All Genres</option>
+          </select>
+          <select id="catalogueLanguageFilter">
+            <option value="all">All Languages</option>
+          </select>
+          <select id="catalogueBranchFilter">
+            <option value="all">All Branches</option>
+          </select>
+          <select id="catalogueAgeFilter">
+            <option value="all">All Age Groups</option>
+          </select>
+          <select id="catalogueTypeFilter">
+            <option value="all">Rent / Buy</option>
+            <option value="Rent">Rent</option>
+            <option value="Buy">Buy</option>
+            <option value="Rent & Buy">Rent & Buy</option>
+          </select>
           <select id="conditionFilter">
             <option value="all">All Conditions</option>
           </select>
@@ -148,7 +171,6 @@
             <option value="priceLow">Sort: Price Low to High</option>
             <option value="priceHigh">Sort: Price High to Low</option>
           </select>
-          <button id="resetFilters" class="btn light">Reset</button>
         </div>
 
         <div id="booksGrid" class="books-grid"></div>

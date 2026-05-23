@@ -852,6 +852,12 @@ const typeFilter = document.getElementById('typeFilter');
 const conditionFilter = document.getElementById('conditionFilter');
 const availabilityFilter = document.getElementById('availabilityFilter');
 const sortFilter = document.getElementById('sortFilter');
+const catalogueSearchInput = document.getElementById('catalogueSearchInput');
+const catalogueGenreFilter = document.getElementById('catalogueGenreFilter');
+const catalogueLanguageFilter = document.getElementById('catalogueLanguageFilter');
+const catalogueBranchFilter = document.getElementById('catalogueBranchFilter');
+const catalogueAgeFilter = document.getElementById('catalogueAgeFilter');
+const catalogueTypeFilter = document.getElementById('catalogueTypeFilter');
 const resultCount = document.getElementById('resultCount');
 const paginationControls = document.getElementById('paginationControls');
 
@@ -877,6 +883,10 @@ fillSelect(categoryFilter, uniqueValues('genre'));
 fillSelect(languageFilter, uniqueValues('language'));
 fillSelect(branchFilter, uniqueValues('branch'));
 fillSelect(ageFilter, uniqueValues('age'));
+fillSelect(catalogueGenreFilter, uniqueValues('genre'));
+fillSelect(catalogueLanguageFilter, uniqueValues('language'));
+fillSelect(catalogueBranchFilter, uniqueValues('branch'));
+fillSelect(catalogueAgeFilter, uniqueValues('age'));
 fillSelect(conditionFilter, uniqueValues('condition'));
 
 function statusClass(status) {
@@ -978,15 +988,21 @@ function matchesFilter(value, filterValue) {
   return filterValue === 'all' || value === filterValue || value === 'Both';
 }
 
+function activeValue(primarySelect, fallbackSelect) {
+  const primaryValue = primarySelect?.value || 'all';
+  const fallbackValue = fallbackSelect?.value || 'all';
+  return primaryValue !== 'all' ? primaryValue : fallbackValue;
+}
+
 function filterBooks() {
   currentPage = 1;
 
-  const q = (searchInput?.value || '').toLowerCase().trim();
-  const genre = categoryFilter?.value || 'all';
-  const language = languageFilter?.value || 'all';
-  const branch = branchFilter?.value || 'all';
-  const age = ageFilter?.value || 'all';
-  const type = typeFilter?.value || 'all';
+  const q = ((catalogueSearchInput?.value || searchInput?.value || '')).toLowerCase().trim();
+  const genre = activeValue(catalogueGenreFilter, categoryFilter);
+  const language = activeValue(catalogueLanguageFilter, languageFilter);
+  const branch = activeValue(catalogueBranchFilter, branchFilter);
+  const age = activeValue(catalogueAgeFilter, ageFilter);
+  const type = activeValue(catalogueTypeFilter, typeFilter);
   const condition = conditionFilter?.value || 'all';
   const availability = availabilityFilter?.value || 'all';
 
@@ -1013,21 +1029,29 @@ function filterBooks() {
 
 document.getElementById('searchBtn')?.addEventListener('click', filterBooks);
 searchInput?.addEventListener('input', filterBooks);
+catalogueSearchInput?.addEventListener('input', filterBooks);
 [
   categoryFilter, languageFilter, branchFilter, ageFilter, typeFilter,
+  catalogueGenreFilter, catalogueLanguageFilter, catalogueBranchFilter, catalogueAgeFilter, catalogueTypeFilter,
   conditionFilter, availabilityFilter, sortFilter
 ].forEach(select => select?.addEventListener('change', filterBooks));
 
 document.querySelectorAll('.quick-tags button').forEach(btn => {
   btn.addEventListener('click', () => {
     searchInput.value = btn.dataset.key;
+    if (catalogueSearchInput) catalogueSearchInput.value = btn.dataset.key;
     filterBooks();
   });
 });
 
 document.getElementById('resetFilters')?.addEventListener('click', () => {
   searchInput.value = '';
-  [categoryFilter, languageFilter, branchFilter, ageFilter, typeFilter, conditionFilter, availabilityFilter].forEach(select => {
+  if (catalogueSearchInput) catalogueSearchInput.value = '';
+  [
+    categoryFilter, languageFilter, branchFilter, ageFilter, typeFilter,
+    catalogueGenreFilter, catalogueLanguageFilter, catalogueBranchFilter, catalogueAgeFilter, catalogueTypeFilter,
+    conditionFilter, availabilityFilter
+  ].forEach(select => {
     if (select) select.value = 'all';
   });
   if (sortFilter) sortFilter.value = 'popular';
