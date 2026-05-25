@@ -943,3 +943,107 @@ footer{
     align-items:flex-start;
   }
 }
+
+
+/* V10 Login Page + Combined Contact/Location Section */
+.contact-section{
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:stretch;
+}
+
+.contact-section iframe{
+  width:100%;
+  height:230px;
+  border:0;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+.contact-branch,
+.contact-form-card{
+  min-width:0;
+}
+
+.contact-form-card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.contact-form-card input{
+  margin-bottom:8px;
+}
+
+.login-page .main-header{
+  position:relative;
+}
+
+.login-nav{
+  margin-left:auto;
+  display:flex;
+  gap:24px;
+  align-items:center;
+  color:white;
+  font-weight:700;
+}
+
+.login-shell{
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:45px 4%;
+  background:linear-gradient(135deg,#fff6ea,#fff0e5);
+}
+
+.login-card{
+  width:100%;
+  max-width:520px;
+}
+
+.login-card h1{
+  margin:8px 0 10px;
+  font-size:34px;
+}
+
+.login-card label{
+  display:block;
+  border-bottom:0;
+  padding:12px 0 6px;
+  color:var(--ink);
+  font-weight:800;
+}
+
+.login-card input{
+  margin-bottom:8px;
+}
+
+.login-note{
+  margin-top:18px;
+  padding:15px;
+  border-radius:12px;
+  background:#fff6ea;
+  border:1px solid var(--border);
+}
+
+.login-note h3{
+  margin:0 0 8px;
+  color:var(--orange);
+}
+
+.login-note p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+@media(max-width:1000px){
+  .contact-section{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:620px){
+  .login-nav{
+    display:none;
+  }
+}
