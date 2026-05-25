@@ -1122,24 +1122,21 @@ footer{
   text-align:center;
 }
 
-.founder-photo-placeholder{
-  height:260px;
-  border-radius:14px;
-  border:2px dashed #f0b69b;
-  background:linear-gradient(135deg,#fff3ea,#fffaf3);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:var(--orange);
-  font-weight:900;
+.founder-photo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-.founder-photo-placeholder small{
-  color:var(--muted);
-  margin-top:10px;
-  font-weight:600;
-  line-height:1.5;
+.founder-photo img{
+    width:100%;
+    max-width:320px;
+    height:auto;
+    display:block;
+    margin:auto;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 .legacy-section,
