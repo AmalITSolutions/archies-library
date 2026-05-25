@@ -1126,16 +1126,13 @@ footer{
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:20px;
 }
 
 .founder-photo img{
     width:100%;
-    max-width:220px;
+    max-width:240px;
     height:auto;
-    object-fit:contain;
     display:block;
-    margin:auto;
     border-radius:18px;
     box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
