@@ -978,13 +978,13 @@ function renderBooks(list) {
     <article class="book-card enhanced-book-card">
       <button class="wishlist-mini phase2-btn" type="button" title="Wishlist preview">♡</button>
       <span class="book-ribbon ${book.popularity >= 80 ? 'ribbon-hot' : book.availability === 'Limited' ? 'ribbon-limited' : 'ribbon-new'}">${book.popularity >= 80 ? 'Most Borrowed' : book.availability === 'Limited' ? 'Limited' : 'Available'}</span>
-      <div class="book-cover ${coverClass(book)}">
+      <div class="book-cover ${coverClass(book)} clickable-book" data-title="${escapeHTML(book.title)}">
         <span class="cover-genre">${escapeHTML(book.genre)}</span>
         <div class="cover-title">${escapeHTML(book.title)}</div>
         <span class="cover-footer">Archies Library</span>
       </div>
       <div class="book-body">
-        <h3>${escapeHTML(book.title)}</h3>
+        <h3 class="clickable-book-title" data-title="${escapeHTML(book.title)}">${escapeHTML(book.title)}</h3>
         <p>${escapeHTML(book.author)}</p>
         <p class="small">${escapeHTML(book.genre)} · ${escapeHTML(book.language)} · ${escapeHTML(book.age)}</p>
         <div class="book-meta">
@@ -1134,13 +1134,29 @@ function closeBookDetails() {
 }
 
 document.addEventListener('click', event => {
+
   const viewButton = event.target.closest('.view-book-btn');
   if (viewButton) {
     openBookDetails(viewButton.dataset.title);
     return;
   }
 
-  if (event.target.matches('[data-close-modal]') || event.target.classList.contains('book-modal-backdrop')) {
+  const clickableCover = event.target.closest('.clickable-book');
+  if (clickableCover) {
+    openBookDetails(clickableCover.dataset.title);
+    return;
+  }
+
+  const clickableTitle = event.target.closest('.clickable-book-title');
+  if (clickableTitle) {
+    openBookDetails(clickableTitle.dataset.title);
+    return;
+  }
+
+  if (
+    event.target.matches('[data-close-modal]') ||
+    event.target.classList.contains('book-modal-backdrop')
+  ) {
     closeBookDetails();
   }
 });
