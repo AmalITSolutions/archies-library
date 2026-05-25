@@ -900,6 +900,26 @@ function whatsappLink(book) {
   return `https://wa.me/97143967924?text=${encodeURIComponent(message)}`;
 }
 
+function escapeHTML(value) {
+  return String(value).replace(/[&<>'"]/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[character]));
+}
+
+function coverClass(book) {
+  return `genre-${String(book.genre).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+}
+
+function bookModeLabel(book) {
+  if (book.type === 'Rent') return 'Rental Only';
+  if (book.type === 'Buy') return 'Buy Only';
+  return 'Rent or Buy';
+}
+
 function renderPagination(totalItems) {
   if (!paginationControls) return;
 
@@ -930,7 +950,7 @@ function renderPagination(totalItems) {
       if (!page || page === currentPage) return;
       currentPage = page;
       renderBooks(filteredBooks);
-      document.getElementById('books')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('catalogue')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 }
@@ -955,26 +975,29 @@ function renderBooks(list) {
   }
 
   grid.innerHTML = pageBooks.map(book => `
-    <article class="book-card">
-      <div class="book-cover">
-        <div class="cover-title">${book.title}</div>
+    <article class="book-card enhanced-book-card">
+      <div class="book-cover ${coverClass(book)}">
+        <span class="cover-genre">${escapeHTML(book.genre)}</span>
+        <div class="cover-title">${escapeHTML(book.title)}</div>
+        <span class="cover-footer">Archies Library</span>
       </div>
       <div class="book-body">
-        <h3>${book.title}</h3>
-        <p>${book.author}</p>
-        <p class="small">${book.genre} · ${book.language} · ${book.age}</p>
+        <h3>${escapeHTML(book.title)}</h3>
+        <p>${escapeHTML(book.author)}</p>
+        <p class="small">${escapeHTML(book.genre)} · ${escapeHTML(book.language)} · ${escapeHTML(book.age)}</p>
         <div class="book-meta">
           <span class="chip">${book.type.includes('Rent') ? 'Rent' : 'Buy Only'}</span>
           ${book.type.includes('Buy') ? '<span class="chip buy">Buy</span>' : ''}
-          <span class="status ${statusClass(book.availability)}">${book.availability}</span>
+          <span class="status ${statusClass(book.availability)}">${escapeHTML(book.availability)}</span>
         </div>
-        <p class="small">Branch: <strong>${book.branch}</strong> · Condition: <strong>${book.condition}</strong></p>
+        <p class="small">Branch: <strong>${escapeHTML(book.branch)}</strong> · Condition: <strong>${escapeHTML(book.condition)}</strong></p>
         <div class="book-price">
           <strong>From AED ${book.rentPrice}</strong>
           <span class="small">Popular: ${book.popularity}%</span>
         </div>
-        <div class="book-actions">
-          <a class="btn light" href="#contact">Enquire</a>
+        <div class="book-actions book-actions-three">
+          <button class="btn light view-book-btn" type="button" data-title="${escapeHTML(book.title)}">Details</button>
+          <a class="btn light" href="contact.html">Enquire</a>
           <a class="btn primary" href="${whatsappLink(book)}" target="_blank">WhatsApp</a>
         </div>
       </div>
@@ -1064,6 +1087,65 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
 
 filterBooks();
 
+
+
+// V16: Book details modal and Phase 2 preview buttons
+function openBookDetails(title) {
+  const book = books.find(item => item.title === title);
+  const modal = document.getElementById('bookDetailsModal');
+  const content = document.getElementById('bookDetailsContent');
+  if (!book || !modal || !content) return;
+
+  content.innerHTML = `
+    <div class="modal-book-cover ${coverClass(book)}">
+      <span class="cover-genre">${escapeHTML(book.genre)}</span>
+      <div class="cover-title">${escapeHTML(book.title)}</div>
+      <span class="cover-footer">Archies Library</span>
+    </div>
+    <div class="modal-book-info">
+      <span class="offer-label">${escapeHTML(bookModeLabel(book))}</span>
+      <h2>${escapeHTML(book.title)}</h2>
+      <p><strong>Author:</strong> ${escapeHTML(book.author)}</p>
+      <p><strong>Genre:</strong> ${escapeHTML(book.genre)} · <strong>Language:</strong> ${escapeHTML(book.language)}</p>
+      <p><strong>Branch:</strong> ${escapeHTML(book.branch)} · <strong>Condition:</strong> ${escapeHTML(book.condition)}</p>
+      <p><strong>Availability:</strong> ${escapeHTML(book.availability)} · <strong>Starting from:</strong> AED ${book.rentPrice}</p>
+      <p class="small">This is sample catalogue data for the current demo site. Final availability, purchase price and rental rules will be confirmed by Archies Library.</p>
+      <div class="modal-actions">
+        <a class="btn primary" href="${whatsappLink(book)}" target="_blank">Ask on WhatsApp</a>
+        <a class="btn light" href="contact.html">Send Enquiry</a>
+        <button class="btn light phase2-btn" type="button">♡ Wishlist</button>
+        <button class="btn light phase2-btn" type="button">🛒 Add to Cart</button>
+      </div>
+      <small class="phase2-note">Wishlist and cart are Phase 2 preview features.</small>
+    </div>
+  `;
+
+  modal.classList.add('open');
+  document.body.classList.add('modal-open');
+}
+
+function closeBookDetails() {
+  const modal = document.getElementById('bookDetailsModal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('click', event => {
+  const viewButton = event.target.closest('.view-book-btn');
+  if (viewButton) {
+    openBookDetails(viewButton.dataset.title);
+    return;
+  }
+
+  if (event.target.matches('[data-close-modal]') || event.target.classList.contains('book-modal-backdrop')) {
+    closeBookDetails();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeBookDetails();
+});
 
 // V15: Highlight active navigation item on section clicks/scroll
 (function(){

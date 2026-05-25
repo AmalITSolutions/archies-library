@@ -1460,3 +1460,172 @@ footer{
     font-size:30px;
   }
 }
+
+
+/* V16 Book Catalogue Polish */
+.enhanced-book-card .book-cover{
+  min-height:220px;
+  padding:22px 18px;
+  border-bottom:1px solid #f4ddcb;
+}
+
+.book-cover{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  text-align:left;
+  color:#ffffff;
+  border-radius:10px 10px 0 0;
+  background:linear-gradient(135deg,#e8481c,#ff8b5f);
+}
+
+.book-cover::before{
+  border-color:rgba(255,255,255,.35);
+}
+
+.cover-genre,
+.cover-footer{
+  position:relative;
+  z-index:1;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:.95;
+}
+
+.cover-title{
+  position:relative;
+  z-index:1;
+  font-size:22px;
+  line-height:1.12;
+  font-weight:900;
+  max-width:90%;
+  text-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+
+.genre-self-help{background:linear-gradient(135deg,#e8481c,#ff9f68)}
+.genre-business{background:linear-gradient(135deg,#1f4e5f,#058b90)}
+.genre-fiction{background:linear-gradient(135deg,#7a3e23,#c66d3a)}
+.genre-thriller,.genre-mystery{background:linear-gradient(135deg,#26201c,#7d2c24)}
+.genre-fantasy,.genre-young-adult{background:linear-gradient(135deg,#4d3a83,#9b6bd3)}
+.genre-children,.genre-comics,.genre-manga{background:linear-gradient(135deg,#058b90,#64c7b7)}
+.genre-classic,.genre-history{background:linear-gradient(135deg,#7a4b2a,#b9824f)}
+.genre-biography{background:linear-gradient(135deg,#334155,#64748b)}
+.genre-school,.genre-academic,.genre-language-learning{background:linear-gradient(135deg,#1d4ed8,#60a5fa)}
+.genre-magazine,.genre-travel,.genre-cooking{background:linear-gradient(135deg,#2f855a,#9fcb6c)}
+.genre-religion,.genre-poetry{background:linear-gradient(135deg,#7c2d12,#d97706)}
+
+.book-actions-three{
+  grid-template-columns:1fr 1fr 1fr;
+}
+
+.book-actions button{
+  width:100%;
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:13px;
+  padding:10px 8px;
+}
+
+.book-modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.62);
+  z-index:999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.book-modal-backdrop.open{
+  display:flex;
+}
+
+body.modal-open{
+  overflow:hidden;
+}
+
+.book-modal{
+  width:min(920px,96vw);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  position:relative;
+  padding:26px;
+}
+
+.modal-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:#fff0e8;
+  color:var(--orange);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:24px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.book-details-content{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:26px;
+  align-items:stretch;
+}
+
+.modal-book-cover{
+  min-height:360px;
+  border-radius:16px;
+  padding:26px 22px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:var(--shadow);
+}
+
+.modal-book-info h2{
+  font-size:32px;
+  margin:10px 0 14px;
+}
+
+.modal-book-info p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.modal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.phase2-note{
+  display:block;
+  color:var(--muted);
+  margin-top:12px;
+}
+
+@media(max-width:700px){
+  .book-details-content{
+    grid-template-columns:1fr;
+  }
+  .modal-book-cover{
+    min-height:260px;
+  }
+  .book-actions-three{
+    grid-template-columns:1fr;
+  }
+}
