@@ -976,7 +976,7 @@ function renderBooks(list) {
 
   grid.innerHTML = pageBooks.map(book => `
     <article class="book-card enhanced-book-card">
-      <button class="wishlist-mini phase2-btn" type="button" title="Wishlist preview">♡</button>
+      
       <span class="book-ribbon ${book.popularity >= 80 ? 'ribbon-hot' : book.availability === 'Limited' ? 'ribbon-limited' : 'ribbon-new'}">${book.popularity >= 80 ? 'Most Borrowed' : book.availability === 'Limited' ? 'Limited' : 'Available'}</span>
       <div class="book-cover ${coverClass(book)} clickable-book" data-title="${escapeHTML(book.title)}">
         <span class="cover-genre">${escapeHTML(book.genre)}</span>
