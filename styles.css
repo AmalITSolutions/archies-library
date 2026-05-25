@@ -1302,3 +1302,41 @@ footer{
     scroll-margin-top:95px;
   }
 }
+
+
+/* V14 Header Cleanup: one sticky header group, no empty row, social shortcuts restored */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:60;
+}
+
+.site-header .topbar{
+  position:relative !important;
+  top:auto !important;
+  z-index:auto !important;
+}
+
+.site-header .main-header{
+  position:relative !important;
+  top:auto !important;
+  z-index:auto !important;
+}
+
+.site-header .social{
+  margin-left:auto;
+  font-weight:600;
+}
+
+@media(max-width:1000px){
+  .site-header .main-header nav{
+    top:100%;
+    z-index:80;
+  }
+}
+
+@media(max-width:620px){
+  .site-header{
+    position:relative;
+  }
+}
