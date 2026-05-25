@@ -1100,7 +1100,7 @@ footer{
 .founder-section{
   margin:18px 4%;
   display:grid;
-  grid-template-columns:1.4fr .8fr;
+  grid-template-columns:1.6fr 320px;
   gap:24px;
   align-items:center;
 }
@@ -1129,8 +1129,8 @@ footer{
 }
 
 .founder-photo img{
-    width:100%;
-    max-width:240px;
+    width:220px;
+    max-width:220px;
     height:auto;
     display:block;
     border-radius:18px;
