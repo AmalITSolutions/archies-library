@@ -976,6 +976,8 @@ function renderBooks(list) {
 
   grid.innerHTML = pageBooks.map(book => `
     <article class="book-card enhanced-book-card">
+      <button class="wishlist-mini phase2-btn" type="button" title="Wishlist preview">♡</button>
+      <span class="book-ribbon ${book.popularity >= 80 ? 'ribbon-hot' : book.availability === 'Limited' ? 'ribbon-limited' : 'ribbon-new'}">${book.popularity >= 80 ? 'Most Borrowed' : book.availability === 'Limited' ? 'Limited' : 'Available'}</span>
       <div class="book-cover ${coverClass(book)}">
         <span class="cover-genre">${escapeHTML(book.genre)}</span>
         <div class="cover-title">${escapeHTML(book.title)}</div>
@@ -996,9 +998,9 @@ function renderBooks(list) {
           <span class="small">Popular: ${book.popularity}%</span>
         </div>
         <div class="book-actions book-actions-three">
-          <button class="btn light view-book-btn" type="button" data-title="${escapeHTML(book.title)}">Details</button>
-          <a class="btn light" href="contact.html">Enquire</a>
-          <a class="btn primary" href="${whatsappLink(book)}" target="_blank">WhatsApp</a>
+          <button class="btn light view-book-btn" type="button" data-title="${escapeHTML(book.title)}">View</button>
+          <a class="btn light" href="contact.html">Ask</a>
+          <a class="btn primary" href="${whatsappLink(book)}" target="_blank">WA</a>
         </div>
       </div>
     </article>

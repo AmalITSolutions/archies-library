@@ -1629,3 +1629,76 @@ body.modal-open{
     grid-template-columns:1fr;
   }
 }
+
+
+/* V17 Book Catalogue UI Enhancements */
+.enhanced-book-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.enhanced-book-card:hover{
+  transform:translateY(-7px) scale(1.01);
+}
+
+.wishlist-mini{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:3;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.65);
+  background:rgba(255,255,255,.92);
+  color:var(--orange);
+  font-size:20px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+}
+
+.book-ribbon{
+  position:absolute;
+  top:14px;
+  left:-34px;
+  z-index:3;
+  transform:rotate(-38deg);
+  width:132px;
+  text-align:center;
+  color:white;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.04em;
+  padding:5px 0;
+  text-transform:uppercase;
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+.ribbon-hot{background:#d97706;}
+.ribbon-limited{background:#7c2d12;}
+.ribbon-new{background:#058b90;}
+
+.book-actions-three{
+  grid-template-columns:.9fr .9fr .8fr;
+}
+
+.book-actions-three .btn{
+  font-size:13px;
+  padding:10px 6px;
+  min-width:0;
+}
+
+.book-actions-three .primary{
+  background:var(--orange);
+}
+
+.phase2-btn:hover{
+  transform:translateY(-1px);
+}
+
+@media(max-width:700px){
+  .book-actions-three{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+}
