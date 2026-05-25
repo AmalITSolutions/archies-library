@@ -1340,3 +1340,123 @@ footer{
     position:relative;
   }
 }
+
+
+/* V15 Contact Page Layout + Active Menu Highlight */
+.main-header nav a.active{
+  background:rgba(255,255,255,.22);
+  border-radius:22px;
+  padding:10px 14px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);
+}
+
+.main-header nav a.whatsapp-nav.active,
+.main-header nav a.account.active{
+  background:white;
+  color:var(--orange);
+  border-color:white;
+}
+
+.contact-hero{
+  margin:18px 4%;
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  background:linear-gradient(135deg,#fffaf3,#fff0e5);
+}
+
+.contact-hero-card h1{
+  margin:8px 0 10px;
+  font-size:36px;
+}
+
+.contact-hero-card p{
+  color:var(--muted);
+  line-height:1.7;
+  max-width:950px;
+}
+
+.contact-page-grid{
+  margin:18px 4%;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+
+.contact-location-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.contact-location-card h2{
+  margin-top:0;
+}
+
+.contact-location-card p{
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.contact-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:10px 0 14px;
+}
+
+.contact-location-card iframe{
+  width:100%;
+  min-height:300px;
+  border:0;
+  border-radius:12px;
+  margin-top:auto;
+}
+
+.contact-message-section{
+  margin:18px 4%;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.contact-message-section p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.contact-message-section .contact-form-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.contact-message-section input,
+.contact-message-section select,
+.contact-message-section textarea{
+  margin-bottom:10px;
+}
+
+@media(max-width:900px){
+  .contact-page-grid,
+  .contact-message-section{
+    grid-template-columns:1fr;
+  }
+
+  .contact-location-card iframe{
+    min-height:260px;
+  }
+}
+
+@media(max-width:620px){
+  .main-header nav a.active{
+    padding:8px 12px;
+  }
+  .contact-hero-card h1{
+    font-size:30px;
+  }
+}

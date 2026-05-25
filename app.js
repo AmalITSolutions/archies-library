@@ -1063,3 +1063,29 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
 });
 
 filterBooks();
+
+
+// V15: Highlight active navigation item on section clicks/scroll
+(function(){
+  const navLinks = document.querySelectorAll('.main-header nav a');
+  if (!navLinks.length) return;
+
+  function clearSectionActive(){
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.includes('#home') || href.includes('#catalogue') || href.includes('#membership')) {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href') || '';
+      if (href.includes('#home') || href.includes('#catalogue') || href.includes('#membership')) {
+        clearSectionActive();
+        link.classList.add('active');
+      }
+    });
+  });
+})();
