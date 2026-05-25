@@ -1219,3 +1219,36 @@ footer{
     font-size:34px;
   }
 }
+
+/* Final founder photo fix */
+.founder-section{
+  grid-template-columns:1.4fr 300px !important;
+  max-width:1180px;
+  margin:18px auto;
+}
+
+.founder-card{
+  max-width:300px;
+  overflow:hidden;
+}
+
+.founder-card img{
+  width:220px !important;
+  max-width:220px !important;
+  height:auto !important;
+  display:block;
+  margin:0 auto 12px auto;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+@media(max-width:900px){
+  .founder-section{
+    grid-template-columns:1fr !important;
+  }
+
+  .founder-card{
+    max-width:320px;
+    margin:auto;
+  }
+}
