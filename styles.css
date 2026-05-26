@@ -1703,31 +1703,106 @@ body.modal-open{
   }
 }
 
-/* Hide inactive book quick menu */
-.book-menu,
-.book-quick-menu,
-.quick-menu,
-.book-card-menu,
-.book-action-menu{
+
+/* V18 Real Covers + Clean Book Details */
+.wishlist-mini,
+.book-ribbon{
   display:none !important;
 }
 
-
-/* Fix ribbon text trimming */
-.book-ribbon{
-  left:10px !important;
-  right:auto !important;
-  width:auto !important;
-  min-width:max-content !important;
-  max-width:160px !important;
-  white-space:nowrap !important;
-  overflow:visible !important;
-  text-overflow:clip !important;
-  padding:7px 12px !important;
-  font-size:11px !important;
-  z-index:3;
+.clickable-book,
+.clickable-book-title{
+  cursor:pointer;
 }
 
-.book-ribbon{
-  display:none !important;
+.clickable-book-title:hover{
+  color:var(--orange);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.book-cover.has-real-cover{
+  background:#fff;
+  padding:0;
+  border:0;
+}
+
+.book-cover.has-real-cover::before,
+.book-cover.has-real-cover .cover-placeholder{
+  display:none;
+}
+
+.book-cover.has-real-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.book-cover .cover-placeholder{
+  position:relative;
+  z-index:1;
+  width:100%;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.modal-book-cover.has-real-cover{
+  background:white;
+  padding:0;
+  overflow:hidden;
+}
+
+.modal-book-cover.has-real-cover img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:white;
+  padding:14px;
+}
+
+.modal-summary{
+  font-size:16px;
+  color:#47382e !important;
+  line-height:1.7;
+  background:#fff6ea;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+}
+
+.details-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:16px 0;
+}
+
+.details-grid div{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:11px 12px;
+}
+
+.details-grid strong{
+  display:block;
+  color:var(--orange);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:4px;
+}
+
+.details-grid span{
+  color:var(--ink);
+  font-weight:700;
+}
+
+@media(max-width:700px){
+  .details-grid{
+    grid-template-columns:1fr;
+  }
 }

@@ -920,6 +920,79 @@ function bookModeLabel(book) {
   return 'Rent or Buy';
 }
 
+
+function bookDescription(book) {
+  const descriptions = {
+    "Atomic Habits": "A practical guide to building good habits, breaking bad ones, and improving little by little every day.",
+    "The Da Vinci Code": "A fast-paced mystery thriller involving symbols, history, secrets, and a race across Europe.",
+    "Harry Potter and the Philosopher's Stone": "The beginning of Harry Potter's magical journey into Hogwarts, friendship, courage, and adventure.",
+    "Murder on the Orient Express": "A classic detective mystery featuring Hercule Poirot and one of Agatha Christie's most memorable cases.",
+    "The Alchemist": "A modern classic about dreams, destiny, and a shepherd boy's journey to discover his personal legend.",
+    "Rich Dad Poor Dad": "A personal finance book that explains money, assets, liabilities, and financial thinking in simple language."
+  };
+
+  return descriptions[book.title] || `${book.title} is listed in the ${book.genre} section at Archies Library. This sample entry can later be replaced with the final book description, edition details and live stock information.`;
+}
+
+function coverSearchQuery(book) {
+  return encodeURIComponent(`${book.title} ${book.author}`);
+}
+
+function renderCoverHTML(book, extraClass = '') {
+  return `
+    <div class="book-cover ${coverClass(book)} ${extraClass}" data-cover-title="${escapeHTML(book.title)}" data-cover-author="${escapeHTML(book.author)}">
+      <div class="cover-placeholder">
+        <span class="cover-genre">${escapeHTML(book.genre)}</span>
+        <div class="cover-title">${escapeHTML(book.title)}</div>
+        <span class="cover-footer">Archies Library</span>
+      </div>
+    </div>
+  `;
+}
+
+const coverCache = new Map();
+
+async function fetchOpenLibraryCover(book) {
+  const key = `${book.title}|${book.author}`;
+  if (coverCache.has(key)) return coverCache.get(key);
+
+  try {
+    const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}&limit=1`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Cover search failed');
+    const data = await response.json();
+    const doc = data.docs && data.docs[0];
+    let coverUrl = '';
+    if (doc?.cover_i) {
+      coverUrl = `https://covers.openlibrary.org/b/id/${doc.cover_i}-M.jpg`;
+    } else if (doc?.isbn?.length) {
+      coverUrl = `https://covers.openlibrary.org/b/isbn/${doc.isbn[0]}-M.jpg`;
+    }
+    coverCache.set(key, coverUrl);
+    return coverUrl;
+  } catch (error) {
+    coverCache.set(key, '');
+    return '';
+  }
+}
+
+function applyCoverImage(element, coverUrl) {
+  if (!element || !coverUrl) return;
+  element.classList.add('has-real-cover');
+  element.innerHTML = `<img src="${coverUrl}" alt="Book cover" loading="lazy" onerror="this.closest('.book-cover').classList.remove('has-real-cover'); this.remove();">`;
+}
+
+function loadVisibleBookCovers() {
+  document.querySelectorAll('.book-cover[data-cover-title]').forEach(async cover => {
+    if (cover.dataset.loaded === 'true') return;
+    cover.dataset.loaded = 'true';
+    const book = books.find(item => item.title === cover.dataset.coverTitle);
+    if (!book) return;
+    const url = await fetchOpenLibraryCover(book);
+    applyCoverImage(cover, url);
+  });
+}
+
 function renderPagination(totalItems) {
   if (!paginationControls) return;
 
@@ -976,13 +1049,7 @@ function renderBooks(list) {
 
   grid.innerHTML = pageBooks.map(book => `
     <article class="book-card enhanced-book-card">
-      
-      <span class="book-ribbon ${book.popularity >= 80 ? 'ribbon-hot' : book.availability === 'Limited' ? 'ribbon-limited' : 'ribbon-new'}">${book.popularity >= 80 ? 'Most Borrowed' : book.availability === 'Limited' ? 'Limited' : 'Available'}</span>
-      <div class="book-cover ${coverClass(book)} clickable-book" data-title="${escapeHTML(book.title)}">
-        <span class="cover-genre">${escapeHTML(book.genre)}</span>
-        <div class="cover-title">${escapeHTML(book.title)}</div>
-        <span class="cover-footer">Archies Library</span>
-      </div>
+      ${renderCoverHTML(book, 'clickable-book')}
       <div class="book-body">
         <h3 class="clickable-book-title" data-title="${escapeHTML(book.title)}">${escapeHTML(book.title)}</h3>
         <p>${escapeHTML(book.author)}</p>
@@ -1007,6 +1074,7 @@ function renderBooks(list) {
   `).join('') || '<p>No books found. Try another search or reset filters.</p>';
 
   renderPagination(list.length);
+  loadVisibleBookCovers();
 }
 
 function matchesFilter(value, filterValue) {
@@ -1099,18 +1167,21 @@ function openBookDetails(title) {
   if (!book || !modal || !content) return;
 
   content.innerHTML = `
-    <div class="modal-book-cover ${coverClass(book)}">
-      <span class="cover-genre">${escapeHTML(book.genre)}</span>
-      <div class="cover-title">${escapeHTML(book.title)}</div>
-      <span class="cover-footer">Archies Library</span>
-    </div>
+    ${renderCoverHTML(book, 'modal-book-cover')}
     <div class="modal-book-info">
       <span class="offer-label">${escapeHTML(bookModeLabel(book))}</span>
       <h2>${escapeHTML(book.title)}</h2>
-      <p><strong>Author:</strong> ${escapeHTML(book.author)}</p>
-      <p><strong>Genre:</strong> ${escapeHTML(book.genre)} · <strong>Language:</strong> ${escapeHTML(book.language)}</p>
-      <p><strong>Branch:</strong> ${escapeHTML(book.branch)} · <strong>Condition:</strong> ${escapeHTML(book.condition)}</p>
-      <p><strong>Availability:</strong> ${escapeHTML(book.availability)} · <strong>Starting from:</strong> AED ${book.rentPrice}</p>
+      <p class="modal-summary">${escapeHTML(bookDescription(book))}</p>
+      <div class="details-grid">
+        <div><strong>Author</strong><span>${escapeHTML(book.author)}</span></div>
+        <div><strong>Genre</strong><span>${escapeHTML(book.genre)}</span></div>
+        <div><strong>Language</strong><span>${escapeHTML(book.language)}</span></div>
+        <div><strong>Age Group</strong><span>${escapeHTML(book.age)}</span></div>
+        <div><strong>Branch</strong><span>${escapeHTML(book.branch)}</span></div>
+        <div><strong>Condition</strong><span>${escapeHTML(book.condition)}</span></div>
+        <div><strong>Availability</strong><span>${escapeHTML(book.availability)}</span></div>
+        <div><strong>Starting From</strong><span>AED ${book.rentPrice}</span></div>
+      </div>
       <p class="small">This is sample catalogue data for the current demo site. Final availability, purchase price and rental rules will be confirmed by Archies Library.</p>
       <div class="modal-actions">
         <a class="btn primary" href="${whatsappLink(book)}" target="_blank">Ask on WhatsApp</a>
@@ -1124,6 +1195,7 @@ function openBookDetails(title) {
 
   modal.classList.add('open');
   document.body.classList.add('modal-open');
+  loadVisibleBookCovers();
 }
 
 function closeBookDetails() {
@@ -1134,7 +1206,6 @@ function closeBookDetails() {
 }
 
 document.addEventListener('click', event => {
-
   const viewButton = event.target.closest('.view-book-btn');
   if (viewButton) {
     openBookDetails(viewButton.dataset.title);
@@ -1143,7 +1214,7 @@ document.addEventListener('click', event => {
 
   const clickableCover = event.target.closest('.clickable-book');
   if (clickableCover) {
-    openBookDetails(clickableCover.dataset.title);
+    openBookDetails(clickableCover.dataset.coverTitle || clickableCover.dataset.title);
     return;
   }
 
@@ -1153,10 +1224,7 @@ document.addEventListener('click', event => {
     return;
   }
 
-  if (
-    event.target.matches('[data-close-modal]') ||
-    event.target.classList.contains('book-modal-backdrop')
-  ) {
+  if (event.target.matches('[data-close-modal]') || event.target.classList.contains('book-modal-backdrop')) {
     closeBookDetails();
   }
 });
