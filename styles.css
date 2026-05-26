@@ -1806,3 +1806,212 @@ body.modal-open{
     grid-template-columns:1fr;
   }
 }
+
+/* V19 Mobile/Tablet Friendly + Clean Pricing Labels */
+.book-price strong{
+  font-size:15px;
+  line-height:1.35;
+}
+
+@media(max-width:1100px){
+  .main-header{
+    padding:10px 4%;
+  }
+  .main-header nav{
+    gap:14px;
+    font-size:14px;
+  }
+  .account,
+  .whatsapp-nav{
+    padding:9px 11px;
+  }
+  .books-grid{
+    grid-template-columns:repeat(3,minmax(190px,1fr));
+  }
+}
+
+@media(max-width:900px){
+  .topbar{
+    padding:8px 4%;
+    gap:12px;
+    flex-wrap:wrap;
+    font-size:13px;
+  }
+  .topbar .social{
+    margin-left:0;
+    width:100%;
+  }
+  .main-header{
+    position:sticky;
+    top:0;
+  }
+  .main-header nav{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    background:linear-gradient(90deg,var(--orange),#f05a23);
+    padding:16px 4%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+    box-shadow:0 16px 28px rgba(0,0,0,.18);
+  }
+  .main-header nav.open{
+    display:flex;
+  }
+  .main-header nav a{
+    padding:12px 14px;
+    border-radius:12px;
+  }
+  .menu-btn{
+    display:block;
+  }
+  .brand img{
+    height:62px;
+  }
+  .hero{
+    min-height:auto;
+    background-size:cover;
+  }
+  .hero-content{
+    grid-template-columns:1fr;
+    padding:42px 5%;
+    gap:24px;
+  }
+  .hero h1{
+    font-size:34px;
+  }
+  .hero p{
+    font-size:16px;
+  }
+  .hero-actions{
+    flex-wrap:wrap;
+  }
+  .search-row,
+  .advanced-filters,
+  .catalogue-search-row,
+  .catalogue-toolbar.full-filter-grid{
+    grid-template-columns:1fr;
+  }
+  .feature-strip{
+    grid-template-columns:repeat(2,1fr);
+    margin:14px 3%;
+  }
+  .offers-section,
+  .layout-grid,
+  .about-preview-grid,
+  .contact-page-grid,
+  .contact-section,
+  .footer-grid{
+    grid-template-columns:1fr !important;
+  }
+  .layout-grid,
+  .offers-section,
+  .about-section,
+  .testimonials,
+  .footer-grid,
+  .contact-section{
+    margin-left:3%;
+    margin-right:3%;
+  }
+  .books-grid{
+    grid-template-columns:repeat(2,minmax(180px,1fr));
+    gap:16px;
+  }
+  .book-cover{
+    height:230px;
+  }
+  .book-body{
+    min-height:auto;
+  }
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .book-modal-content,
+  #bookDetailsContent{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media(max-width:560px){
+  body{
+    font-size:15px;
+  }
+  .topbar{
+    display:block;
+    line-height:1.8;
+  }
+  .topbar .social{
+    width:auto;
+  }
+  .main-header{
+    padding:9px 4%;
+  }
+  .brand img{
+    height:54px;
+  }
+  .hero-content{
+    padding:34px 5%;
+  }
+  .hero h1{
+    font-size:30px;
+  }
+  .search-card,
+  .panel,
+  .offer-card{
+    padding:18px;
+    border-radius:12px;
+  }
+  .feature-strip{
+    grid-template-columns:1fr;
+    padding:16px;
+  }
+  .feature-strip div{
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    padding:12px 8px;
+  }
+  .feature-strip div:last-child{
+    border-bottom:0;
+  }
+  .books-grid{
+    grid-template-columns:1fr;
+  }
+  .book-cover{
+    height:260px;
+  }
+  .book-actions-three{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+  .pagination-controls{
+    gap:6px;
+  }
+  .pagination-controls button{
+    padding:8px 9px;
+    font-size:12px;
+  }
+  .branch-photos,
+  .about-mini-cards,
+  .testimonial-grid,
+  .timeline-grid,
+  .details-grid{
+    grid-template-columns:1fr !important;
+  }
+  .contact-section iframe,
+  .contact-page-card iframe{
+    height:240px;
+  }
+  .book-modal-panel{
+    width:94vw;
+    max-height:88vh;
+    overflow:auto;
+  }
+  .modal-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+}

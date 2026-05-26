@@ -920,6 +920,18 @@ function bookModeLabel(book) {
   return 'Rent or Buy';
 }
 
+function bookAccessLabel(book) {
+  if (book.type === 'Rent') return 'Included with membership';
+  if (book.type === 'Buy') return 'Buy: Ask store';
+  return 'Rent: Membership · Buy: Ask store';
+}
+
+function bookAccessTitle(book) {
+  if (book.type === 'Rent') return 'Rental';
+  if (book.type === 'Buy') return 'Purchase';
+  return 'Rent / Buy';
+}
+
 
 function bookDescription(book) {
   const descriptions = {
@@ -1061,7 +1073,7 @@ function renderBooks(list) {
         </div>
         <p class="small">Branch: <strong>${escapeHTML(book.branch)}</strong> · Condition: <strong>${escapeHTML(book.condition)}</strong></p>
         <div class="book-price">
-          <strong>From AED ${book.rentPrice}</strong>
+          <strong>${escapeHTML(bookAccessLabel(book))}</strong>
           <span class="small">Popular: ${book.popularity}%</span>
         </div>
         <div class="book-actions book-actions-three">
@@ -1180,9 +1192,9 @@ function openBookDetails(title) {
         <div><strong>Branch</strong><span>${escapeHTML(book.branch)}</span></div>
         <div><strong>Condition</strong><span>${escapeHTML(book.condition)}</span></div>
         <div><strong>Availability</strong><span>${escapeHTML(book.availability)}</span></div>
-        <div><strong>Starting From</strong><span>AED ${book.rentPrice}</span></div>
+        <div><strong>${escapeHTML(bookAccessTitle(book))}</strong><span>${escapeHTML(bookAccessLabel(book))}</span></div>
       </div>
-      <p class="small">This is sample catalogue data for the current demo site. Final availability, purchase price and rental rules will be confirmed by Archies Library.</p>
+      <p class="small">This is sample catalogue data for the current demo site. Final availability, membership rules and purchase price will be confirmed by Archies Library.</p>
       <div class="modal-actions">
         <a class="btn primary" href="${whatsappLink(book)}" target="_blank">Ask on WhatsApp</a>
         <a class="btn light" href="contact.html">Send Enquiry</a>
